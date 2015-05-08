@@ -7,14 +7,14 @@ before_action :set_pin, :only => [:show,:edit,:update,:destroy]
 	end
 
 	def new
-		@pin = Pin.new
+		@pin = current_user.pins.build
 	end
 
 	def show
 	end
 
 	def create
-		@pin = Pin.new(pin_params)
+		@pin = current_user.pins.build(pin_params)
 		if @pin.save
 			redirect_to @pin, notice: "successfully created new Pin"
 		else
