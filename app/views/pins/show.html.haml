@@ -1,0 +1,5 @@
+%h1= @pin.title
+%p= @pin.description
+%br/
+= link_to "view all", pins_path, :class => "btn btn-success"
+= link_to "Edit", edit_pin_path(@pin), :class => "btn btn-warning"

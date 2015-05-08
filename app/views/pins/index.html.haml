@@ -1,0 +1,8 @@
+- @pins.each do |pin|
+	%h2= link_to pin.title, pin_path(pin)
+	= pin.description
+	= link_to "Edit", edit_pin_path(pin), class: "btn btn-primary"
+	= link_to "Delete", pin_path(pin), :method => :delete, data: {confirm: "are you sure"}, class: "btn btn-danger"
+%br/
+%br/
+= link_to "New Pin", new_pin_path, :class => "btn btn-primary"	
