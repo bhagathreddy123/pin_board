@@ -1,9 +1,15 @@
-- @pins.each do |pin|
-	= link_to (image_tag pin.image.url(:medium)), pin_path(pin)
-	%h2= link_to pin.title, pin_path(pin)
-	= pin.description
-	= link_to "Edit", edit_pin_path(pin), class: "btn btn-primary"
-	= link_to "Delete", pin_path(pin), :method => :delete, data: {confirm: "are you sure"}, class: "btn btn-danger"
-%br/
-%br/
-= link_to "New Pin", new_pin_path, :class => "btn btn-primary"	
+#pins.transitions-enabled
+	- @pins.each do |pin|
+		.box.panel.panel-default
+			= link_to (image_tag pin.image.url(:medium)), pin_path(pin)
+			.panel-body
+				%h2= link_to pin.title, pin_path(pin)
+				= pin.description
+				%p.user
+				Submitted by
+				= pin.user.email
+				= link_to "Edit", edit_pin_path(pin), class: "btn btn-primary"
+				= link_to "Delete", pin_path(pin), :method => :delete, data: {confirm: "are you sure"}, class: "btn btn-danger"
+				%br/
+				%br/
+	= link_to "New Pin", new_pin_path, :class => "btn btn-primary"	

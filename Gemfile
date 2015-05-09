@@ -17,7 +17,7 @@ gem 'bootstrap-sass', '~> 3.3.4.1'
 #gem 'gritter', '~> 1.1.0'
 gem 'devise', '~> 3.4.1'
 gem 'paperclip', '~> 4.2.1'
-
+gem 'masonry-rails', '~> 0.2.4'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
