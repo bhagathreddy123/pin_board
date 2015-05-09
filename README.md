@@ -52,4 +52,52 @@ $ ->
   		$("#pins").masonry
       		itemSelector: '.box',
       		isFitWidth: true
-added styles in application.css.scss
+added styles in application.css.scss and  below line
+ *= require 'masonry/transitions'
+added some classes and ids for styles in index.html and show.html
+
+gem 'acts_as_votable', '~> 0.10.0'
+rails generate acts_as_votable:migration
+rake db:migrate
+write below line in pin model
+acts_as_votable  
+
+routes
+  resources :pins do
+  	member do
+  		put "like",    to: "pins#upvote"
+  	end
+  end
+
+  pin controller write below method and specify before_action
+
+  def upvote
+		@pin.upvote_by current_user
+		redirect_to :back
+	end
+
+write below code in show page
+.btn-group.pull-right
+							= link_to like_pin_path(@pin), method: :put, class: "btn btn-default" do
+								%span.glyphicon.glyphicon-heart
+								= @pin.get_upvotes.size
+							- if user_signed_in?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
-before_action :set_pin, :only => [:show,:edit,:update,:destroy]
-	#before_action :authenticate_user!, :except => [:index, :show]
+before_action :set_pin, :only => [:show,:edit,:update,:destroy,:upvote]
+	before_action :authenticate_user!, :except => [:index, :show]
 	def index
 		  @pins = Pin.all.order("created_at DESC")
 		  # @pins = Pin.all.order("created_at DESC")
@@ -38,6 +38,11 @@ before_action :set_pin, :only => [:show,:edit,:update,:destroy]
 		if @pin.destroy
 			redirect_to pins_path, notice: "Pin deleted sucessfully"
 		end
+	end 
+
+	def upvote
+		@pin.upvote_by current_user
+		redirect_to :back
 	end
 
 	private

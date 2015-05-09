@@ -18,6 +18,8 @@ gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'devise', '~> 3.4.1'
 gem 'paperclip', '~> 4.2.1'
 gem 'masonry-rails', '~> 0.2.4'
+gem 'acts_as_votable', '~> 0.10.0'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
