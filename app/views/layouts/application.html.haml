@@ -1,11 +1,30 @@
 !!! 5
 %html
 %head
-    %title Pin Board
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+	%title Pin Board
+	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
+	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	= csrf_meta_tags
+
 %body
-    - flash.each do |name,msg|
-        = content_tag :div, msg, class: "alert alert-info"
-    =yield
+	%nav.navbar.navbar-default
+		.container
+		.navbar-brand= link_to "RecipeBox",root_path
+		- if user_signed_in?
+			%ul.nav.navbar-nav.navbar-right
+				%li= link_to "New Recipe", new_pin_path
+				%li= link_to "Edit User", edit_user_registration_path, :class => "btn btn-warning"
+				%li= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "btn btn-danger"
+		- else
+			%ul.nav.navbar-nav.navbar-right
+				%li= link_to "SignUP", new_user_registration_path
+				%li= link_to "Signin", new_user_session_path
+	.container
+		- flash.each do |name,msg|
+			= content_tag :div, msg, class: "alert alert-info"
+	=yield
+
+
+
+
+
